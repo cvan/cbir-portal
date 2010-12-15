@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}CIBR{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="none">
+    <link rel="icon" type="image/x-icon"
+          href="{{ MEDIA_URL }}images/favicon.ico">
+    {% block site_css %}
+      <link href="{{ MEDIA_URL }}css/general.css" rel="stylesheet"
+          type="text/css" media="screen,projection,tv">
+    {% endblock %}
+    {% block css %}{% endblock %}
+    {% block extra_head %}{% endblock %}
+  </head>
+  <body>
+    <header>
+      {% block header %}{% endblock %}
+    </header>
+    <section id="content">
+      {% block content %}{% endblock %}
+    </div>
+    <footer>
+      {% block footer %}{% endblock %}
+    </footer>
+    {% block site_js %}
+      {% ifequal DEPLOYMENT "SOLO" %}
+        <script type="text/javascript"
+                src="{{ MEDIA_URL }}js/vendor/jquery-1.4.4.js"></script>
+      {% else %}
+      {% if request.is_secure %}
+        <script type="text/javascript"
+                src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js">
+        </script>
+      {% else %}
+      <script type="text/javascript"
+              src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js">
+      </script>
+      {% endif %}
+      <script type="text/javascript" src="{{ MEDIA_URL }}js/global.js"></script>
+      {% endifequal %}
+    {% endblock %}
+    {% block js %}{% endblock %}
+  </body>
+</html>

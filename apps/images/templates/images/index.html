@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _('Browse Images') }} | {{ block.super }}{% endblock %}
+
+{% block content %}
+
+<h1>{{ _('Browse Images') }}</h1>
+
+{{ image }}
+
+<form action="" method="post" enctype="multipart/form-data">
+  <fieldset>
+    <legend>{{ _('Upload Image') }}</legend>
+    {% csrf_token %}
+    {{ upload_form.as_p|safe }}
+    <p class="help">{{ _('PGM supported.') }}</p>
+    <p><button type="submit">Submit</button></p>
+  </fieldset>
+</form>
+
+{% endblock %}
