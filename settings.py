@@ -1,5 +1,6 @@
 import os
-import logging, logging.handlers
+import logging
+import logging.handlers
 
 import environment
 import logconfig
@@ -112,6 +113,7 @@ MEDIA_URL = '/media/'
 ADMIN_MEDIA_PREFIX = '/media/admin'
 ROOT_URLCONF = 'urls'
 
+
 # Version Information
 
 # Grab the current commit SHA from git - handy for confirming the version
@@ -209,6 +211,8 @@ DEBUG_TOOLBAR_CONFIG = {
 
 # Application Settings
 
+GALLERY_PATH = os.path.join(MEDIA_ROOT, 'images', 'gallery')
+GALLERY_URL = MEDIA_URL + 'images/gallery/'
 
 # Maximum length of the filename. Forms should use this and raise
 # ValidationError if the length is exceeded.
@@ -217,10 +221,6 @@ DEBUG_TOOLBAR_CONFIG = {
 MAX_FILENAME_LENGTH = 200
 MAX_FILEPATH_LENGTH = 250
 
-
-IMAGE_MAX_FILESIZE = 1048576 # 1 megabyte (in bytes).
-THUMBNAIL_SIZE = 120 # Thumbnail size (in pixels).
-THUMBNAIL_UPLOAD_PATH = 'uploads/thumbs/'
 IMAGE_UPLOAD_PATH = 'uploads/images/'
 # A string listing image mime types to accept, comma separated.
 # String must not contain double quotes!
@@ -229,7 +229,7 @@ IMAGE_ALLOWED_MIMETYPES = ('image/jpeg,image/png,image/gif,'
                            'image/x-portable-pixmap')
 
 
-SECRET_KEY = 'TODO-generate-a-new-secret-key'
+SECRET_KEY = 'some-super-secret-token'
 
 LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/'
@@ -240,26 +240,18 @@ SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 
 # Middleware
 
-middleware_list = [
-    'commonware.log.ThreadRequestMiddleware',
+MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-]
+)
 
 if DEPLOYMENT != DeploymentType.SOLO:
-    middleware_list += [
+    MIDDLEWARE_CLASSES += (
         'django.middleware.transaction.TransactionMiddleware',
-        'commonware.middleware.SetRemoteAddrFromForwardedFor',
-    ]
-else:
-    middleware_list += [
-        'debug_toolbar.middleware.DebugToolbarMiddleware',
-    ]
-
-MIDDLEWARE_CLASSES = tuple(middleware_list)
+    )
 
 # Templates
 
@@ -302,6 +294,5 @@ INSTALLED_APPS = (
 if DEPLOYMENT == DeploymentType.SOLO:
     INSTALLED_APPS += (
         'django_extensions',
-        'debug_toolbar',
         'django_nose',
     )

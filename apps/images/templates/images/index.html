@@ -4,9 +4,9 @@
 
 {% block content %}
 
-<h1>{{ _('Browse Images') }}</h1>
+<h1>CIBR</h1>
 
-{{ image }}
+<h2>{{ _('Browse Images') }}</h2>
 
 <form action="" method="post" enctype="multipart/form-data">
   <fieldset>
@@ -17,5 +17,15 @@
     <p><button type="submit">Submit</button></p>
   </fieldset>
 </form>
+
+<div id="grid-slider">
+  <div class="ui-slider-handle"></div>
+</div>
+
+<ul id="grid">
+{% for image in images %}
+  <li><img src="{{ image.src }}" width="{{ image.width }}" height="{{ image.height }}"></li>
+{% endfor %}
+</ul>
 
 {% endblock %}

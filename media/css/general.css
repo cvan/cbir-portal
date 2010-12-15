@@ -175,7 +175,9 @@ a.delete:hover, a.delete:focus, a.delete:active {
 /* @group Font families */
 
 body {
-    font-family: "Helvetica Neue", "Bitstream Vera Sans", Arial, Helvetica, sans-serif;
+    font-family: "Gill Sans", "Gill Sans MT", "Helvetica Neue", "Bitstream Vera Sans", Arial, Helvetica, sans-serif;
+    line-height: 1.4em;
+    color: #4c4a3d;
 }
 
 pre, code, kbd, tt, samp, tt {

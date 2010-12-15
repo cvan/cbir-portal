@@ -13,9 +13,7 @@ def create_image(files):
 
 
 def paginate(request, queryset, per_page=20):
-    """
-    Get a Paginator, abstracting some common paging actions.
-    """
+    """Get a Paginator, abstracting some common paging actions."""
     p = paginator.Paginator(queryset, per_page)
 
     # Get the page from the request, make sure it's an int.

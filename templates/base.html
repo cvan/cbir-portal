@@ -9,6 +9,8 @@
     {% block site_css %}
       <link href="{{ MEDIA_URL }}css/general.css" rel="stylesheet"
           type="text/css" media="screen,projection,tv">
+      <link href="{{ MEDIA_URL }}css/ui.all.css" rel="stylesheet"
+          type="text/css" media="screen,projection,tv">
     {% endblock %}
     {% block css %}{% endblock %}
     {% block extra_head %}{% endblock %}
@@ -17,7 +19,7 @@
     <header>
       {% block header %}{% endblock %}
     </header>
-    <section id="content">
+    <section class="section" id="content">
       {% block content %}{% endblock %}
     </div>
     <footer>
@@ -37,6 +39,8 @@
               src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js">
       </script>
       {% endif %}
+      <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui-personalized-1.5.3.min.js"></script>
+<!--      <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.masonry.js"></script>-->
       <script type="text/javascript" src="{{ MEDIA_URL }}js/global.js"></script>
       {% endifequal %}
     {% endblock %}
