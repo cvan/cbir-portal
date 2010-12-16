@@ -127,7 +127,12 @@ p, ul, ol, dl, address, table, pre, form, fieldset {
 }
 
 html, body {
-    background-color: #efefef;
+    background-color: #333;
+    background: url(../images/bg.jpg) center center no-repeat fixed;
+/*    background: -moz-radial-gradient(center 45deg, circle closest-corner, #999 0%, #333 100%) fixed;
+    background: -webkit-gradient(radial, center center, 0, center center, 70, from(#999), to(#333)) fixed;*/
+    height: 100%;
+    width: 100%;
 }
 
 body {

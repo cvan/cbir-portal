@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{% block title %}CIBR{% endblock %}</title>
+    <title>{% block title %}CBIR{% endblock %}</title>
     <meta charset="utf-8">
     <meta name="robots" content="none">
     <link rel="icon" type="image/x-icon"
@@ -17,11 +17,13 @@
   </head>
   <body>
     <header>
-      {% block header %}{% endblock %}
+      {% block header %}
+        <h1>CBIR</h1>
+      {% endblock %}
     </header>
     <section class="section" id="content">
       {% block content %}{% endblock %}
-    </div>
+    </section>
     <footer>
       {% block footer %}{% endblock %}
     </footer>

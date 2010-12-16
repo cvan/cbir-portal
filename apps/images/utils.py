@@ -12,10 +12,12 @@ def create_image(files):
     file = File(up_file)
     image.file.save(up_file.name, file, save=True)
 
+    '''
     from ..cbir.tools.pgmserver import *
     response = client(settings.PGM_SERVER_HOST, settings.PGM_SERVER_PORT, file.read())
     lines = response.split('\n')
     nonEmptyLines = [line + '\n' for line in lines if len(line.strip()) > 0]
+    '''
 
     return {'name': up_file.name, 'url': image.file.url}
 
