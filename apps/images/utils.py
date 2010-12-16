@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.core import paginator
 from django.core.files import File
 
@@ -8,7 +9,14 @@ def create_image(files):
     """Given an uploaded file, create an Image object."""
     up_file = files.values()[0]
     image = Image()
-    image.file.save(up_file.name, File(up_file), save=True)
+    file = File(up_file)
+    image.file.save(up_file.name, file, save=True)
+
+    from ..cbir.tools.pgmserver import *
+    response = client(settings.PGM_SERVER_HOST, settings.PGM_SERVER_PORT, file.read())
+    lines = response.split('\n')
+    nonEmptyLines = [line + '\n' for line in lines if len(line.strip()) > 0]
+
     return {'name': up_file.name, 'url': image.file.url}
 
 

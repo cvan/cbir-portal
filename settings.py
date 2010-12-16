@@ -211,6 +211,9 @@ DEBUG_TOOLBAR_CONFIG = {
 
 # Application Settings
 
+PGM_SERVER_HOST = 'riggle.me'
+PGM_SERVER_PORT = 8081
+
 GALLERY_PATH = os.path.join(MEDIA_ROOT, 'images', 'gallery')
 GALLERY_URL = MEDIA_URL + 'images/gallery/'
 

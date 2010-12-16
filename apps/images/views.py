@@ -29,7 +29,8 @@ def home(request):
     images = []
     for image in os.listdir(settings.GALLERY_PATH)[:40]:
         src = settings.GALLERY_URL + image
-        width, height = img.open(os.path.join(settings.GALLERY_PATH, image)).size
+        width, height = img.open(os.path.join(settings.GALLERY_PATH,
+                                              image)).size
         images.append(dict(src=src, width=width, height=height))
 
     return render_to_response('images/index.html',
