@@ -627,8 +627,13 @@ form#upload-pgm fieldset {
     width: 37%;
 }
 
-form p {
+form#upload-pgm p {
     display: inline-block;
+    margin-bottom: 0;
+}
+
+form#upload-pgm label {
+    font-weight: normal;
 }
 
 /* @end Labels */

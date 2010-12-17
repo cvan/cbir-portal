@@ -27,14 +27,15 @@ def home(request):
     images = Photo.objects.all()
     images = utils.paginate(request, images)
     return render_to_response('images/index.html',
-        dict(images=images, upload_form=upload_form),
-        context_instance=RequestContext(request))
+                              dict(images=images, upload_form=upload_form),
+                              context_instance=RequestContext(request))
 
 
 def similar(request, filename):
     """Similar images page."""
     try:
-        image_words = file(os.path.join(settings.CBIR_PATH, 'docs', filename)).read()
+        image_words = file(os.path.join(settings.CBIR_PATH, 'docs',
+                                        filename)).read()
     except IOError:
         raise Http404
 
@@ -52,8 +53,9 @@ def similar(request, filename):
     images = [utils.get_image_info(result) for result in results]
 
     return render_to_response('images/similar.html',
-        dict(image=image_dict, images=images, upload_form=upload_form),
-        context_instance=RequestContext(request))
+                              dict(image=image_dict, images=images,
+                                   upload_form=upload_form),
+                              context_instance=RequestContext(request))
 
 
 def pgm_results(request, filename):
@@ -65,11 +67,12 @@ def pgm_results(request, filename):
         return HttpResponseRedirect(reverse('images.pgm-results',
                                             args=[upload_img['name']]))
 
-    results = query.execute_query(image.get_absolute_url())
+    results = query.execute_query(image.get_absolute_path())
     image_dict = dict(base_src=image.filename, src=image.get_absolute_url())
 
     images = [utils.get_image_info(result) for result in results]
 
     return render_to_response('images/results.html',
-        dict(image=image_dict, images=images, upload_form=upload_form),
-        context_instance=RequestContext(request))
+                              dict(image=image_dict, images=images,
+                                   upload_form=upload_form),
+                              context_instance=RequestContext(request))
