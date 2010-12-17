@@ -11,11 +11,10 @@
 *.o
 
 # Misc
+db
 cbir
-Debug
-Release
-features
-docs
+
+media/uploads/images/*
 
 # Mac
 *.DS_Store

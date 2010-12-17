@@ -104,7 +104,8 @@ article, aside, details, dialog, figure, footer, header, hgroup, nav, section {
 .clearfix {
     display: inline-block;
 }
-.clearfix:after {
+.clearfix:after,
+form#upload-pgm fieldset:after {
     clear: both;
     content: ".";
     display: block;
@@ -127,12 +128,7 @@ p, ul, ol, dl, address, table, pre, form, fieldset {
 }
 
 html, body {
-    background-color: #333;
-    background: url(../images/bg.jpg) center center no-repeat fixed;
-/*    background: -moz-radial-gradient(center 45deg, circle closest-corner, #999 0%, #333 100%) fixed;
-    background: -webkit-gradient(radial, center center, 0, center center, 70, from(#999), to(#333)) fixed;*/
-    height: 100%;
-    width: 100%;
+    background-color: #efefef;
 }
 
 body {
@@ -140,7 +136,6 @@ body {
     color: #555;
     font-size: 13px;
     line-height: 1.538em; /* Baseline grid of 20px */
-    min-width: 780px;
 }
 
 nav ul,
@@ -198,6 +193,14 @@ h1 {
     line-height: 1em; /* 36px */
     margin-top: 0.1667em; /* 36px */
     margin-bottom: 0.5833em; /* 36px */
+}
+
+h1 small {
+    border-left: #ccc 1px solid;
+    color: #555;
+    font-size: 0.85em;
+    margin-left: 0.5em;
+    padding-left: 0.75em;
 }
 
 h2 {
@@ -269,7 +272,7 @@ h5 span.subtitle {
 #wrap {
     background-color: #fff;
     border: #9b9b9b 1px solid;
-    border-top-width: 0;
+    border-width: 0 1px;
     padding-bottom: 2%;
 }
 
@@ -285,8 +288,11 @@ h5 span.subtitle {
 
 /* @group Header */
 
-#header {
-    position: relative;
+header#header section {
+    background-color: #f3f3f3;
+    background: -moz-linear-gradient(#fff, #def);
+    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#def));
+    padding: 0.5em 0.5em 0 0.5em;
 }
 
 .masthead {
@@ -298,7 +304,7 @@ h5 span.subtitle {
     border-bottom-right-radius: 5px;
     border: #ccc 1px solid;
     border-width: 0 1px 1px 0;
-    padding: 1em 2em;
+    padding: 0.5em 2em 1em;
     margin: -1em 0 1.5em -2em;
     position: relative;
 }
@@ -313,7 +319,7 @@ h5 span.subtitle {
     text-shadow: #ccc 0 1px 1px;
 }
 
-.login .masthead {
+.masthead {
     border-top-width: 1px;
     -moz-border-radius: 0 5px 5px 0;
     -webkit-border-radius: 0 5px 5px 0;
@@ -616,6 +622,15 @@ button.link {
 
 /* @end Form controls */
 
+form#upload-pgm fieldset {
+    float: right;
+    width: 37%;
+}
+
+form p {
+    display: inline-block;
+}
+
 /* @end Labels */
 
 /* @group Breadcrumbs */
@@ -708,38 +723,27 @@ button[type=submit]:active {
 input[type=submit],
 button[type=submit] {
     margin-top: -2px;
-/*
-    min-width: 90px;
-    padding: 0.165em 0.5em;
-*/
-}
-
-.actions a.edit,
-.actions a.delete,
-.actions a.details {
-    background-repeat: no-repeat;
-    min-height: 16px;
-    padding-left: 25px;
-}
-
-.actions a.edit {
-    background-image: url(../images/pencil.png);
-}
-.actions a.delete {
-    background-image: url(../images/delete.png);
-}
-.actions a.details {
-    background-image: url(../images/information.png);
 }
 
 /* @end */
 
-/* @group Search */
-
-#search {
-    position: absolute;
-    top: 15%;
-    right: 0;
+img {
+    background-color: #fff;
+    border: #aaa 1px solid;
+    -moz-box-shadow: #ccc 0 1px 3px;
+    -webkit-box-shadow: #ccc 0 1px 3px;
+    box-shadow: #ccc 0 1px 3px;
+    display: block;
+    padding: 2px;
+}
+a:hover img {
+    border-color: #888;
 }
 
-/* @end */
+
+.pagination {
+    background-color: #eff;
+    border: #06a 1px solid;
+    font-size: 1.5em;
+    padding: 0.5em;
+}

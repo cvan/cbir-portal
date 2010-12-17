@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _('Similar Images') }} | {{ block.super }}{% endblock %}
+
+{% block content %}
+<form id="upload-pgm" action="" method="post" enctype="multipart/form-data" class="clearfix">
+  {% csrf_token %}
+  <fieldset>
+    <legend>{{ _('Search by PGM Image') }}</legend>
+    {{ upload_form.as_p|safe }}
+    <button type="submit">{{ _('Upload Query') }}</button>
+  </fieldset>
+</form>
+
+<header class="masthead">
+  <h2><strong>{{ image.base_src }}</strong></h2>
+</header>
+<p><img src="{{ image.src }}" width="{{ image.width }}" height="{{ image.height }}"></p>
+
+<h3>{{ _('Similar to this one') }}</h3>
+<ul id="grid" class="results">
+{% for image in images %}
+  <li>
+    <a href="{% url images.similar image.base_src %}">
+      <img src="{{ image.src }}" width="{{ image.width }}" height="{{ image.height }}">
+    </a>
+  </li>
+{% endfor %}
+</ul>
+
+{% endblock %}

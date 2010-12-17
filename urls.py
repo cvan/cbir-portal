@@ -1,11 +1,12 @@
 from django.conf.urls.defaults import patterns, url, include
 from django.conf import settings
 from django.contrib import admin
+from django.http import HttpResponsePermanentRedirect
 
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    #url(r'^$', 'direct_to_template', {'template': 'index.html'}, name='index'),
+    (r'^$', lambda request: HttpResponsePermanentRedirect('/images/')),
 
     # Images.
     ('^images/', include('images.urls')),

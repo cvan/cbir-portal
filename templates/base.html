@@ -16,17 +16,24 @@
     {% block extra_head %}{% endblock %}
   </head>
   <body>
-    <header>
-      {% block header %}
-        <h1>CBIR</h1>
-      {% endblock %}
-    </header>
-    <section class="section" id="content">
-      {% block content %}{% endblock %}
-    </section>
-    <footer>
-      {% block footer %}{% endblock %}
-    </footer>
+    <div id="wrap" class="section">
+      <header id="header">
+        <section class="primary full">
+          {% block header %}
+            <h1>
+              <a href="{% url home %}">CBIR</a>
+              <small>Content-Based-Image-Retrieval</small>
+            </h1>
+          {% endblock %}
+        </section>
+      </header>
+      <section class="primary full" id="content">
+        {% block content %}{% endblock %}
+      </section>
+      <footer>
+        {% block footer %}{% endblock %}
+      </footer>
+    </div>
     {% block site_js %}
       {% ifequal DEPLOYMENT "SOLO" %}
         <script type="text/javascript"
@@ -42,7 +49,6 @@
       </script>
       {% endif %}
       <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui-personalized-1.5.3.min.js"></script>
-<!--      <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.masonry.js"></script>-->
       <script type="text/javascript" src="{{ MEDIA_URL }}js/global.js"></script>
       {% endifequal %}
     {% endblock %}

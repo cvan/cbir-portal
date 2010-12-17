@@ -211,11 +211,11 @@ DEBUG_TOOLBAR_CONFIG = {
 
 # Application Settings
 
-PGM_SERVER_HOST = 'riggle.me'
-PGM_SERVER_PORT = 8081
+CBIR_PATH = path('../cbir')
 
 GALLERY_PATH = os.path.join(MEDIA_ROOT, 'images', 'gallery')
 GALLERY_URL = MEDIA_URL + 'images/gallery/'
+GALLERY_SIZE = 10000 # Number of images in gallery
 
 # Maximum length of the filename. Forms should use this and raise
 # ValidationError if the length is exceeded.
@@ -225,11 +225,8 @@ MAX_FILENAME_LENGTH = 200
 MAX_FILEPATH_LENGTH = 250
 
 IMAGE_UPLOAD_PATH = 'uploads/images/'
-# A string listing image mime types to accept, comma separated.
-# String must not contain double quotes!
-IMAGE_ALLOWED_MIMETYPES = ('image/jpeg,image/png,image/gif,'
-                           'image/x-portable-bitmap,image/x-portable-graymap,'
-                           'image/x-portable-pixmap')
+IMAGE_UPLOAD_URL = MEDIA_URL + IMAGE_UPLOAD_PATH
+IMAGE_UPLOAD_PATH_FULL = path(os.path.join(MEDIA_ROOT, IMAGE_UPLOAD_PATH))
 
 
 SECRET_KEY = 'some-super-secret-token'

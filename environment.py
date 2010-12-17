@@ -9,6 +9,7 @@ path = lambda *a: os.path.join(ROOT, *a)
 
 prev_sys_path = list(sys.path)
 
+site.addsitedir(path('../cbir'))
 site.addsitedir(path('apps'))
 site.addsitedir(path('lib'))
 if os.path.exists(path('vendor')):

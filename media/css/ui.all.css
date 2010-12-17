@@ -4,14 +4,18 @@
 .ui-slider-handle:hover, .ui-slider-handle-active { background:#dadada 0 50% repeat-x;border:1px solid #999; }
 .ui-corner-all { -moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px; }
 
+ul#grid {
+    display: none;
+}
+
 ul#grid li {
 	list-style: none outside;
 	float: left;
-	margin-right: 20px;
-	margin-bottom: 20px;
+	margin-right: 10px;
+	margin-bottom: 10px;
 	font-size: 50px;
 	width: 5em;
-	height: 5em;
+	height: 2em;
 	line-height: 5em;
 	text-align: center;
 }

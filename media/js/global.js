@@ -8,9 +8,10 @@ $(document).ready(function() {
 
 
 function initializeGrid() {
+    $('ul#grid').show();
 	$("#grid-slider").slider({
 		value: 50,
-		max: 100,
+		max: 50,
 		min: 10,
 		slide: function(event, ui) {
 			$("ul#grid li").css("font-size", ui.value + "px");

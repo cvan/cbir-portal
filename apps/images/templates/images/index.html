@@ -3,27 +3,60 @@
 {% block title %}{{ _('Browse Images') }} | {{ block.super }}{% endblock %}
 
 {% block content %}
-
-<h2>{{ _('Browse Images') }}</h2>
-
-<form action="" method="post" enctype="multipart/form-data">
+<form id="upload-pgm" action="" method="post" enctype="multipart/form-data" class="clearfix">
+  {% csrf_token %}
   <fieldset>
-    <legend>{{ _('Upload Image') }}</legend>
-    {% csrf_token %}
+    <legend>{{ _('Search by PGM Image') }}</legend>
     {{ upload_form.as_p|safe }}
-    <p class="help">{{ _('PGM supported.') }}</p>
-    <p><button type="submit">Submit</button></p>
+    <button type="submit">{{ _('Upload Query') }}</button>
   </fieldset>
 </form>
 
-<div id="grid-slider">
-  <div class="ui-slider-handle"></div>
-</div>
+<header class="masthead">
+  <h2>{{ _('Browse Images') }}</h2>
+</header>
 
-<ul id="grid">
-{% for image in images %}
-  <li><img src="{{ image.src }}" width="{{ image.width }}" height="{{ image.height }}"></li>
+{% if images.paginator.num_pages %}
+<p class="pagination">
+  <span class="step-links">
+    {% if images.has_previous %}
+      <a href="?page=1">&larr; Previous</a>
+    {% endif %}
+    <span class="current">
+      Page {{ images.number }} of {{ images.paginator.num_pages }}.
+    </span>
+    {% if images.has_next %}
+      <a href="?page=2">Next &rarr;</a>
+    {% endif %}
+  </span>
+</p>
+{% endif %}
+
+
+<ul id="grid" class="results clearfix">
+{% for image in images.object_list %}
+  <li>
+    <a href="{% url images.similar image.filename %}">
+      <img src="{{ image.src }}" width="{{ image.width }}" height="{{ image.height }}">
+    </a>
+  </li>
 {% endfor %}
 </ul>
+
+{% if images.paginator.num_pages %}
+<p class="pagination">
+  <span class="step-links">
+    {% if images.has_previous %}
+      <a href="?page=1">&larr; Previous</a>
+    {% endif %}
+    <span class="current">
+      Page {{ images.number }} of {{ images.paginator.num_pages }}.
+    </span>
+    {% if images.has_next %}
+      <a href="?page=2">Next &rarr;</a>
+    {% endif %}
+  </span>
+</p>
+{% endif %}
 
 {% endblock %}
