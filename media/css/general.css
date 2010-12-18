@@ -272,7 +272,7 @@ h5 span.subtitle {
 #wrap {
     background-color: #fff;
     border: #9b9b9b 1px solid;
-    border-width: 0 1px;
+    border-width: 0 1px 1px;
     padding-bottom: 2%;
 }
 
@@ -292,18 +292,19 @@ header#header section {
     background-color: #f3f3f3;
     background: -moz-linear-gradient(#fff, #def);
     background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#def));
-    padding: 0.5em 0.5em 0 0.5em;
+    padding: 0.5em 0.5em 0 2em;
 }
 
 .masthead {
     background-color: #f3f3f3;
     background: -moz-linear-gradient(#fff, #f3f3f3);
     background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#f3f3f3));
-    -moz-border-radius-bottomright: 5px;
-    -webkit-border-bottom-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    -moz-border-radius: 0 5px 5px 0;
+    -webkit-border-radius: 0 5px 5px 0;
+    border-radius: 0 5px 5px 0;
     border: #ccc 1px solid;
-    border-width: 0 1px 1px 0;
+    border-width: 1px 1px 1px 0;
     padding: 0.5em 2em 1em;
     margin: -1em 0 1.5em -2em;
     position: relative;
@@ -317,13 +318,6 @@ header#header section {
 }
 .masthead h1 span.subtitle {
     text-shadow: #ccc 0 1px 1px;
-}
-
-.masthead {
-    border-top-width: 1px;
-    -moz-border-radius: 0 5px 5px 0;
-    -webkit-border-radius: 0 5px 5px 0;
-    border-radius: 0 5px 5px 0;
 }
 
 /* @group Logo */

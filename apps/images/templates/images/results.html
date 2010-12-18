@@ -16,8 +16,6 @@
   <h2>PGM Image: <strong>{{ image.base_src }}</strong></h2>
 </header>
 
-<p><img src="{{ image.src }}"></p>
-
 <h3>{{ _('Similar to this one') }}</h3>
 <ul id="grid" class="results">
 {% for image in images %}
@@ -28,5 +26,4 @@
   </li>
 {% endfor %}
 </ul>
-
 {% endblock %}

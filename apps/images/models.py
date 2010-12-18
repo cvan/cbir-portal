@@ -1,12 +1,11 @@
 import datetime
+import os
 
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils import simplejson
 from django.utils.translation import ugettext_lazy as _
-
-from images import utils
 
 
 class Photo(models.Model):
@@ -39,7 +38,7 @@ class Image(models.Model):
         return self.file.url
 
     def get_absolute_path(self):
-        return utils.get_upload_path(self.file.name)
+        return os.path.join(settings.MEDIA_ROOT, self.file.name)
 
 
 class ImageRelationship(models.Model):

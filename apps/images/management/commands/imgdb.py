@@ -11,14 +11,9 @@ class Command(BaseCommand):
     help = "Build the database of images in `%s`." % settings.GALLERY_PATH
 
     def handle(self, *args, **options):
-        if Photo.objects.all().count() == settings.GALLERY_SIZE:
-            self.stdout.write('Image database already built\n')
-            return
+        Photo.objects.all().delete()
         for image in os.listdir(settings.GALLERY_PATH):
-            try:
-                image = Photo.objects.get(filename=image)
-            except Photo.DoesNotExist:
-                src = settings.GALLERY_URL + image
-                w, h = utils.get_image_size(image)
-                Photo(filename=image, src=src, width=w, height=h).save()
+            src = settings.GALLERY_URL + image
+            w, h = utils.get_image_size(image)
+            Photo(filename=image, src=src, width=w, height=h).save()
             self.stdout.write('Imported "%s"\n' % image)
